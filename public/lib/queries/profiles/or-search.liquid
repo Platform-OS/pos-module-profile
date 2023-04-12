@@ -1,0 +1,14 @@
+{% comment %}
+  Searches in community profiles.
+
+  Params:
+    - first_name: string (optional)
+    - last_name: string (optional)
+    - keywords: [string] (optional)
+    - limit: integer
+    - page: integer
+{% endcomment %}
+{% liquid
+  graphql result = 'modules/community/profile/or-search', first_name: first_name, last_name: last_name, keywords: keywords, limit: limit, page: page
+  return result.records
+%}

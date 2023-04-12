@@ -1,0 +1,37 @@
+query (
+  $page: Int!
+  $limit: Int!
+  $first_name: String
+  $last_name: String
+  $id: ID
+  $user_id: String
+) {
+  records(
+    page: $page
+    per_page: $limit
+    filter: {
+      id: { value: $id }
+      table: { value: "modules/community/profile" }
+      properties: [
+        { name: "first_name", value: $first_name }
+        { name: "last_name", value: $last_name }
+        { name: "user_id", value: $user_id }
+      ]
+    }
+    sort: [{ created_at: { order: DESC } }]
+  ) {
+    total_entries
+    total_pages
+    has_previous_page
+    has_next_page
+    results {
+      id
+      created_at
+      type: table
+
+      user_id: property(name: "user_id")
+      first_name: property(name: "first_name")
+      last_name: property(name: "last_name")
+    }
+  }
+}

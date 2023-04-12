@@ -1,0 +1,14 @@
+{% liquid
+  function filters = 'modules/community/lib/queries/profile/filters', params: context.params
+  assign keywords = filters.keyword | split: " "
+  function profiles = 'modules/community/lib/queries/profile/or-search', limit: 12, page: filters.page, first_name: filters.keyword, last_name: filters.keyword, keywords: keywords, sort: filters.sort
+
+  assign pager_url = '?page='
+  if filters.keyword != ''
+    assign pager_url = '?keyword=' | append: filters.keyword | append: '&page='
+  endif
+  assign pager = '{}' | parse_json | hash_merge: active: filters.page, maxCount: 5, count: profiles.total_pages, url: pager_url
+
+  assign result = '{}' | parse_json | hash_merge: profiles: profiles, filters: filters, pager: pager
+  return result
+%}

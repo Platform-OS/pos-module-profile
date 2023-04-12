@@ -1,0 +1,17 @@
+{% comment %}
+  Updates a community profile.
+  Params:
+    - first_name: string
+    - last_name: string
+    - user_id: string
+{% endcomment %}
+{% liquid
+  function object = 'modules/community/lib/commands/profile/update/build', first_name: first_name, last_name: last_name, user_id: user_id
+  function object = 'modules/community/lib/commands/profile/update/check', object: object
+
+  if object.valid
+    graphql profile = 'modules/community/profile/update', args: object
+    hash_assign object['command_result'] = profile
+  endif
+  return object
+%}

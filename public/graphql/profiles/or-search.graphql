@@ -1,0 +1,64 @@
+query (
+  $page: Int!
+  $limit: Int!
+  $first_name: String
+  $last_name: String
+  $keywords: [String!]
+  $sort: RecordsSortInput = { created_at: { order: DESC } }
+) {
+  records(
+    page: $page
+    per_page: $limit
+    filter: {
+      table: { value: "modules/community/profile" }
+      or: [
+        { properties: { name: "first_name", contains: $first_name } }
+        { properties: { name: "last_name", contains: $last_name } }
+        { properties: { name: "first_name", value_in: $keywords } }
+        { properties: { name: "last_name", value_in: $keywords } }
+      ]
+    }
+    sort: [$sort]
+  ) {
+    total_entries
+    total_pages
+    has_previous_page
+    has_next_page
+    results {
+      id
+      created_at
+      type: table
+
+      user_id: property(name: "user_id")
+      first_name: property(name: "first_name")
+      last_name: property(name: "last_name")
+
+      profile: related_record(
+        table: "profile"
+        join_on_property: "user_id"
+        foreign_property: "user_id"
+      ) {
+        id
+        created_at
+        type: table
+
+        slug: property(name: "slug")
+        uuid: property(name: "uuid")
+
+        avatar: related_record(
+          table: "photo"
+          join_on_property: "uuid"
+          foreign_property: "object_uuid"
+          filter: { properties: { name: "photo_type", value: "avatar" } }
+        ) {
+          photo_width: property_int(name: "photo_width")
+          photo_height: property_int(name: "photo_height")
+          photo: property_upload(name: "photo") {
+            url
+            versions
+          }
+        }
+      }
+    }
+  }
+}

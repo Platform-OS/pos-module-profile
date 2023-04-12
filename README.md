@@ -1,10 +1,16 @@
-# Module name
+# Profile
 
-Module description
+Basic profile with basic fields. If you want to add new fields create your own profile that will implement those fields: 
+- first name
+- last name
 
 ## Usage
 
-How to use the module
+Module delivers
+- commands
+- queries
+- events
+- configuration by constant: PROFILE_MODULE
 
 ## Hooks
 

@@ -1,0 +1,5 @@
+{% liquid
+  assign module_name = context.constants.PROFILE_MODULE | default: 'modules/profile'
+
+  return module_name | append: '/profile'
+%}
