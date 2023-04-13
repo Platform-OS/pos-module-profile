@@ -1,12 +1,14 @@
 query (
-  $page: Int!
-  $limit: Int!
+  $page: Int = 1
+  $limit: Int = 20
   $first_name: String
   $last_name: String
   $email: String
   $id: ID
+  $ids: [ID!]
+  $not_ids: [ID!]
+  $uuid: String
   $user_id: String
-  $table: String = "modules/profile/profile"
   $sort: RecordsSortInput = { created_at: { order: DESC } }
   $query: String
 ) {
@@ -14,9 +16,10 @@ query (
     page: $page
     per_page: $limit
     filter: {
-      id: { value: $id }
-      table: { value: $table }
+      id: { value: $id, value_in: $ids, not_value_in: $not_ids }
+      table: { value: "modules/profile/profile" }
       properties: [
+        { name: "uuid", value: $uuid }
         { name: "first_name", value: $first_name }
         { name: "last_name", value: $last_name }
         { name: "user_id", value: $user_id }
