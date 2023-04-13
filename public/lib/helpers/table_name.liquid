@@ -1,5 +1,5 @@
 {% liquid
-  assign module_name = context.constants.PROFILE_MODULE | default: 'modules/profile'
+  function profile_module = 'modules/core/lib/queries/variable/get', name: 'PROFILE_MODULE', default: 'modules/profile'
 
-  return module_name | append: '/profile'
+  return profile_module | append: '/profile'
 %}
