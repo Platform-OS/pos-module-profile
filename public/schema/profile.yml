@@ -1,5 +1,12 @@
 name: profile
 properties:
+  - name: uuid
   - name: user_id
+  - name: name
   - name: first_name
   - name: last_name
+  - name: slug
+  # TODO: consider storing email as well, so we don't have problems with filtering
+
+  # tokenized downcased names for searching
+  - name: c__names

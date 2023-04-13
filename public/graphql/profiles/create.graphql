@@ -1,4 +1,12 @@
-mutation ($user_id: String!, $first_name: String, $last_name: String) {
+mutation (
+  $uuid: String!
+  $user_id: String!,
+  $first_name: String,
+  $last_name: String
+  $name: String
+  $slug: String
+  $c__names: String
+) {
   record: record_create(
     record: {
       table: "modules/profile/profile"
@@ -6,16 +14,16 @@ mutation ($user_id: String!, $first_name: String, $last_name: String) {
         { name: "user_id", value: $user_id }
         { name: "first_name", value: $first_name }
         { name: "last_name", value: $last_name }
+        { name: "uuid", value: $uuid }
+        { name: "name", value: $name }
+        { name: "slug", value: $slug }
+        { name: "c__names", value: $c__names }
       ]
     }
   ) {
     id
     created_at
     type: table
-
-    user_id: property(name: "user_id")
-    first_name: property(name: "first_name")
-    last_name: property(name: "last_name")
     properties
   }
 }

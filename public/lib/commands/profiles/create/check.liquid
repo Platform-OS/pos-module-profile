@@ -4,6 +4,8 @@
   function c = 'modules/core/lib/validations/presence', c: c, object: object, field_name: 'user_id', key: 'validation.blank'
   function table = 'modules/profile/helpers/table_name'
   function c = 'modules/core/lib/validations/uniqueness', c: c, object: object, field_name: 'user_id', table: table, key: 'validation.user_already_has_profile'
+  function c = 'modules/core/lib/validations/presence', c: c, object: object, field_name: 'uuid', key: 'validation.blank'
+  function c = 'modules/core/lib/validations/presence', c: c, object: object, field_name: 'slug', key: 'validation.blank'
 
   assign object = object | hash_merge: c
 

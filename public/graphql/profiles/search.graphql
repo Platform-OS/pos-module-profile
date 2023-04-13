@@ -5,20 +5,24 @@ query (
   $last_name: String
   $id: ID
   $user_id: String
+  $table: String = "modules/profile/profile"
+  $sort: RecordsSortInput = { created_at: { order: DESC } }
+  $query: String
 ) {
   records(
     page: $page
     per_page: $limit
     filter: {
       id: { value: $id }
-      table: { value: "modules/community/profile" }
+      table: { value: $table }
       properties: [
         { name: "first_name", value: $first_name }
         { name: "last_name", value: $last_name }
         { name: "user_id", value: $user_id }
+        { name: "c__names", contains: $query }
       ]
     }
-    sort: [{ created_at: { order: DESC } }]
+    sort: [$sort]
   ) {
     total_entries
     total_pages
@@ -29,9 +33,7 @@ query (
       created_at
       type: table
 
-      user_id: property(name: "user_id")
-      first_name: property(name: "first_name")
-      last_name: property(name: "last_name")
+      properties
     }
   }
 }

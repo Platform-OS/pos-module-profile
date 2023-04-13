@@ -4,6 +4,7 @@
   function object = 'modules/profile/commands/profiles/create/check', object: object
   if object.valid
     function object = 'modules/core/commands/execute', mutation_name: 'modules/profile/profiles/create', object: object
+    assign object = object | hash_merge: object.properties
   endif
   return object
 %}

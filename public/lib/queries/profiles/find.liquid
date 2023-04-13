@@ -1,18 +1,16 @@
-{% comment %}
-  Loads a user's community profile.
-
-  Params:
-    - id: string (optional)
-      The profile ID.
-    - user_id: string (optional)
-      The connected user's ID.
-{% endcomment %}
 {% liquid
+  #Params:
+  #  - id: string (optional)
+  #  - user_id: string (optional)
+
   if user_id == blank and id == blank
-    log 'ERROR: missing ID argument in modules/community/queries/profile/find'
+    log 'ERROR: missing ID argument in modules/profile/queries/profile/find'
     return nil
   endif
 
-  graphql result = 'modules/community/profile/search', user_id: user_id, id: id, limit: 1, page: 1
-  return result.records.results.first
+  graphql result = 'modules/profile/profiles/search', user_id: user_id, id: id, limit: 1, page: 1
+  assign profile = result.records.results.first
+  assign profile = profile | hash_merge: profile.properties
+
+  return profile
 %}
