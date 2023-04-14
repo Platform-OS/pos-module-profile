@@ -1,7 +1,7 @@
 {% parse_json sort_options %}
 {
-   "first_name_desc": { "first_name": { "order": "DESC" }},
-   "first_name_asc": { "first_name": { "order": "ASC" }}
+   "first_name_desc": { "properties": { "name": "first_name", "order": "DESC" }},
+   "first_name_desc": { "properties": { "name": "first_name", "order": "ASC" }}
 }
 {% endparse_json %}
 {% liquid

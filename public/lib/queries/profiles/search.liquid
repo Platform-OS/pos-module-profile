@@ -3,7 +3,7 @@
     assign not_ids = null
   endif
 
-  graphql r = 'modules/profile/profiles/search', limit: limit, uuid: uuid, id: id, ids: ids, slug: slug, user_id: user_id, not_ids: not_ids, query: query, sort: sort
+  graphql r = 'modules/profile/profiles/search', limit: limit, uuid: uuid, id: id, ids: ids, slug: slug, user_id: user_id, not_ids: not_ids, query: query, emails: emails, sort: sort
   # TODO: page is taken by internal object, but we could use different name, page: page
 
   assign records = r.records

@@ -4,6 +4,7 @@ query (
   $first_name: String
   $last_name: String
   $email: String
+  $emails: [String!]
   $id: ID
   $ids: [ID!]
   $not_ids: [ID!]
@@ -23,7 +24,7 @@ query (
         { name: "first_name", value: $first_name }
         { name: "last_name", value: $last_name }
         { name: "user_id", value: $user_id }
-        { name: "email", value: $email }
+        { name: "email", value: $email, value_in: $emails }
         { name: "c__names", contains: $query }
       ]
     }
