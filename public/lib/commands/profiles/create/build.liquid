@@ -1,5 +1,11 @@
 {% liquid
-  assign data = null | hash_merge: first_name: object.first_name, last_name: object.last_name, user_id: object.user_id
+  assign tokenized_names = '[]' | parse_json | add_to_array: object.first_name | add_to_array: object.last_name | compact | uniq | join: ' ' | downcase
+  assign uuid_new = '' | uuid
+  assign uuid = object.uuid | default: uuid_new
+  assign name = object.first_name | append: ' ' | append: object.last_name
+  assign slug = object.first_name | append: object.last_name | append: '-' | append: object.user_id | slugify
+
+  assign data = null | hash_merge: first_name: object.first_name, last_name: object.last_name, user_id: object.user_id, email: object.email, uuid: uuid, name: name, slug: slug, c__names: tokenized_names
 
   return data
 %}

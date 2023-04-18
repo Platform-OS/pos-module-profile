@@ -1,23 +1,21 @@
-mutation (
-  $uuid: String!
-  $user_id: String!,
-  $first_name: String,
-  $last_name: String
-  $name: String
+mutation profiles_update(
+  $id: ID!
   $slug: String
+  $name: String
+  $first_name: String
+  $last_name: String
   $email: String
   $c__names: String
 ) {
-  record: record_create(
+  record: record_update(
+    id: $id
     record: {
       table: "modules/profile/profile"
       properties: [
-        { name: "user_id", value: $user_id }
-        { name: "first_name", value: $first_name }
-        { name: "last_name", value: $last_name }
-        { name: "uuid", value: $uuid }
         { name: "name", value: $name }
         { name: "slug", value: $slug }
+        { name: "first_name", value: $first_name }
+        { name: "last_name", value: $last_name }
         { name: "email", value: $email }
         { name: "c__names", value: $c__names }
       ]
@@ -26,6 +24,7 @@ mutation (
     id
     created_at
     type: table
+
     properties
   }
 }
