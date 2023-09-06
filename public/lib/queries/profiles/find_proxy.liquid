@@ -1,6 +1,6 @@
 {% liquid
   function profile_module = 'modules/core/lib/queries/variable/get', name: 'PROFILE_MODULE', default: 'modules/profile'
   assign function_name = profile_module | append: '/queries/profiles/find'
-  function profile = function_name, user_id: user_id, id: id, slug: slug, uuid: uuid
+  function profile = function_name, user_id: user_id, id: id, slug: slug, uuid: uuid, filters: filters
   return profile
 %}
