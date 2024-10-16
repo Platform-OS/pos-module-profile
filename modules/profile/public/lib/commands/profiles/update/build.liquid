@@ -1,5 +1,5 @@
 {% liquid
-  assign tokenized_names = '[]' | parse_json | add_to_array: object.first_name | add_to_array: object.last_name | compact | uniq | join: ' ' | downcase
+  function tokenized_names = 'modules/profile/commands/profiles/tokenize_names', object: object
   assign name = object.first_name | append: ' ' | append: object.last_name
   if profile.slug
     assign slug = profile.slug
