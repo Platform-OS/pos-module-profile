@@ -3,9 +3,9 @@
 
   function c = 'modules/core/validations/presence', c: c, object: object, field_name: 'id', key: 'validation.blank'
   function c = 'modules/core/validations/uniqueness', c: c, object: object, field_name: 'email', table: 'modules/profile/profile'
-  function c = 'modules/core/validations/length', c: c, object: object, field_name: 'name', maximum: 40
-  function c = 'modules/core/validations/length', c: c, object: object, field_name: 'first_name', maximum: 20
-  function c = 'modules/core/validations/length', c: c, object: object, field_name: 'last_name', maximum: 20
+  function c = 'modules/core/validations/length', c: c, object: object, field_name: 'name', maximum: 80
+  function c = 'modules/core/validations/length', c: c, object: object, field_name: 'first_name', maximum: 40
+  function c = 'modules/core/validations/length', c: c, object: object, field_name: 'last_name', maximum: 40
 
 
   assign object = object | hash_merge: c

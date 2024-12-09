@@ -1,5 +1,5 @@
 {% liquid
-  if user_id == blank and id == blank and first_name == blank and last_name == blank and uuid == blank
+  if user_id == blank and id == blank and uuid == blank
     log 'ERROR: missing ID argument in modules/profile/queries/profile/find'
     return nil
   endif
