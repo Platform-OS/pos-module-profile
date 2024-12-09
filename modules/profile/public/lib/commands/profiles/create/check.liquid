@@ -6,6 +6,12 @@
   function c = 'modules/core/validations/uniqueness', c: c, object: object, field_name: 'user_id', table: table, key: 'validation.user_already_has_profile'
   function c = 'modules/core/validations/presence', c: c, object: object, field_name: 'uuid', key: 'validation.blank'
   function c = 'modules/core/validations/presence', c: c, object: object, field_name: 'slug', key: 'validation.blank'
+  function c = 'modules/core/validations/length', c: c, object: object, field_name: 'name', maximum: 40
+  function c = 'modules/core/validations/length', c: c, object: object, field_name: 'first_name', maximum: 20
+  function c = 'modules/core/validations/length', c: c, object: object, field_name: 'last_name', maximum: 20
+
+
+
 
   assign object = object | hash_merge: c
 
