@@ -4,7 +4,6 @@ mutation (
   $first_name: String,
   $last_name: String
   $name: String
-  $slug: String
   $email: String
   $c__names: String
 ) {
@@ -17,7 +16,6 @@ mutation (
         { name: "last_name", value: $last_name }
         { name: "uuid", value: $uuid }
         { name: "name", value: $name }
-        { name: "slug", value: $slug }
         { name: "email", value: $email }
         { name: "c__names", value: $c__names }
       ]

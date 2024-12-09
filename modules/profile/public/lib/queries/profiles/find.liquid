@@ -1,10 +1,10 @@
 {% liquid
-  if user_id == blank and id == blank and slug == blank and uuid == blank
+  if user_id == blank and id == blank and uuid == blank
     log 'ERROR: missing ID argument in modules/profile/queries/profile/find'
     return nil
   endif
 
-  graphql result = 'modules/profile/profiles/search', user_id: user_id, id: id, slug: slug, uuid: uuid, limit: 1, page: 1
+  graphql result = 'modules/profile/profiles/search', user_id: user_id, id: id, first_name: first_name , last_name: last_name , uuid: uuid, limit: 1, page: 1
   assign profile = result.records.results.first
   assign profile = profile | hash_merge: profile.properties
 
