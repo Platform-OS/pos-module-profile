@@ -1,5 +1,6 @@
 {%liquid
-assign last_name = current_profile.last_name | remove: "-"
+assign first_name = current_profile.properties.first_name
+assign last_name = current_profile.properties.last_name
 assign slug = first_name | append: '-' | append: last_name | append: '-' | append: current_profile.id | slugify
 return slug
 %}
