@@ -9,7 +9,9 @@
   assign records = r.records
   assign profiles = '[]' | parse_json
   for profile in records.results
-    assign p = profile | hash_merge: profile.properties
+    function slug = 'modules/profile/helpers/profiles/slugs/build' , current_profile: profile
+    assign p = profile | hash_merge: profile.properties | hash_merge: slug: slug
+
     assign profiles = profiles | array_add: p
   endfor
   hash_assign records['results'] = profiles
