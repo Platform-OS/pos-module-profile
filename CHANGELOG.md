@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+## v1.0.7
+
+* Improvement: use one hash_merge to merge multiple properties at once
+
 ## v1.0.6
 
 * Fix: bring back slug and name to built-in methods
