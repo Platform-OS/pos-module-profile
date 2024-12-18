@@ -9,9 +9,6 @@
   function c = 'modules/core/validations/length', c: c, object: object, field_name: 'first_name', maximum: 40, allow_blank: null
   function c = 'modules/core/validations/length', c: c, object: object, field_name: 'last_name', maximum: 40, allow_blank: null
 
-
-
-
   assign object = object | hash_merge: c
 
   return object

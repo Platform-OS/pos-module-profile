@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+## v1.0.10
+
+* Fix: generate name based on first name and last name
+
 ## v1.0.9
 
 * Chore: fix platformos-check warnings
