@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. Dates are displayed in UTC.
 
+## v1.0.12
+
+* Improve: slugs build function accepts profile filter and does not require properties
+
 ## v1.0.11
 
 * Fix: do not raise error in find if profile not found
