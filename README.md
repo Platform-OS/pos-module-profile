@@ -10,7 +10,6 @@ Module delivers
 - commands
 - queries
 - events
-- configuration by constant: PROFILE_MODULE
 
 ## Hooks
 
