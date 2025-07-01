@@ -6,6 +6,8 @@
   function c = 'modules/core/validations/length', c: c, object: object, field_name: 'name', maximum: 80, allow_blank: null
   function c = 'modules/core/validations/length', c: c, object: object, field_name: 'first_name', maximum: 40, allow_blank: null
   function c = 'modules/core/validations/length', c: c, object: object, field_name: 'last_name', maximum: 40, allow_blank: null
+  function c = 'modules/core/validations/matches', c: c, object: object, field_name: 'phone',  regexp:"^\+?[1-9]\d{0,2}[\s-]?\(?\d+\)?([\s-]?\d+)*$" 
+  function c = 'modules/core/validations/matches', c: c, object: object, field_name: 'location',  regexp:"^[\p{L}\'\s-]{2,50}$" 
 
 
   assign object = object | hash_merge: c
